@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, "Segoe UI", sans-serif;
+  color: #e8eaf0;
+  background: #101115;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --canvas: #101115;
+  --panel: #15171c;
+  --panel-raised: #191b21;
+  --panel-hover: #20232a;
+  --line: #292b32;
+  --line-soft: #22242a;
+  --text: #e8eaf0;
+  --muted: #898d9a;
+  --faint: #5f6470;
+  --accent: #c1e670;
+  --accent-ink: #1d2710;
+  --danger: #ed8c8c;
+}
+
+:root[data-theme="light"] {
+  color: #25272c;
+  background: #f5f6f7;
+  --canvas: #f5f6f7;
+  --panel: #fff;
+  --panel-raised: #fafbfc;
+  --panel-hover: #eef0f2;
+  --line: #e4e6e9;
+  --line-soft: #eceef0;
+  --text: #25272c;
+  --muted: #737984;
+  --faint: #9da2aa;
+  --accent: #527b22;
+  --accent-ink: #fff;
+  --danger: #b93e48;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 760px; min-height: 100vh; background: var(--canvas); color: var(--text); }
+button, input, textarea, select { font: inherit; }
+button { color: inherit; cursor: pointer; }
+button:disabled { opacity: .55; cursor: wait; }
+::selection { color: #111; background: #c1e670; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
