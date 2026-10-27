@@ -1,137 +1,223 @@
 <div align="center">
+  <img src="./docs/codexa-readme-banner.svg" alt="Codexa: a calmer, colorful desktop workspace for organizing GitHub repositories without moving them." width="100%" />
 
-# codexa
+  <br />
 
-### A calmer way to work with GitHub.
+  <a href="#get-started"><img alt="Get started" src="https://img.shields.io/badge/GET_STARTED-1D2935?style=for-the-badge&logo=rocket&logoColor=C1E670"></a>
+  <a href="#features"><img alt="Features" src="https://img.shields.io/badge/FEATURES-203047?style=for-the-badge&logo=windows&logoColor=8DD5F1"></a>
+  <a href="#security-at-a-glance"><img alt="Security" src="https://img.shields.io/badge/SECURITY-252238?style=for-the-badge&logo=shield&logoColor=C8A5FF"></a>
+  <a href="./LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/LICENSE-MIT-385F24?style=for-the-badge&logo=opensourceinitiative&logoColor=D1F28C"></a>
 
-Organize repositories like a desktop library. Keep your real GitHub repositories exactly where they are.
+  <br /><br />
 
-<br />
+  <img alt="Windows" src="https://img.shields.io/badge/WINDOWS-0078D4?style=flat-square&logo=windows11&logoColor=white">
+  <img alt="Electron" src="https://img.shields.io/badge/ELECTRON-47848F?style=flat-square&logo=electron&logoColor=white">
+  <img alt="React" src="https://img.shields.io/badge/REACT-149ECA?style=flat-square&logo=react&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TYPESCRIPT-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="GitHub REST API" src="https://img.shields.io/badge/GITHUB_REST_API-24292F?style=flat-square&logo=github&logoColor=white">
+  <img alt="Development status" src="https://img.shields.io/badge/STATUS-EARLY_DEVELOPMENT-D58C28?style=flat-square">
 
-![Windows desktop app](https://img.shields.io/badge/platform-Windows-647d38?style=flat-square)
-![Electron](https://img.shields.io/badge/Electron-desktop-20232a?style=flat-square&logo=electron)
-![React](https://img.shields.io/badge/React-TypeScript-3178c6?style=flat-square&logo=react)
-![GitHub API](https://img.shields.io/badge/GitHub-Octokit-181717?style=flat-square&logo=github)
-![Status](https://img.shields.io/badge/status-early%20development-d5a84c?style=flat-square)
-
+  <p><strong>Keep the code on GitHub. Make the workspace your own.</strong></p>
 </div>
 
 <br />
 
-> **The idea:** your GitHub account is the source of truth for repositories. Codexa adds a private, local organization layer—folders, assignments, and favorites—without creating folders, moving repositories, or changing their names on GitHub.
+> [!IMPORTANT]
+> Codexa is in early development. It connects to your real GitHub account, but still has feature gaps. Review [what works](#feature-map) and [what is not implemented yet](#current-boundaries) before relying on it.
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🗂️ Your repositories, organized</h3>
+      <p>Browse repositories in a desktop library. Build nested virtual folders, mark favorites, and move between groups without changing anything on GitHub.</p>
+    </td>
+    <td width="50%">
+      <h3>🔒 Your data, kept local</h3>
+      <p>GitHub remains the source of truth. Folder organization stays in your Windows app data; credentials are protected by Electron's OS-backed secure storage.</p>
+    </td>
+  </tr>
+</table>
+
+<details>
+  <summary><strong>Contents</strong></summary>
+
+- [The idea](#the-idea)
+- [Features](#features)
+- [Feature map](#feature-map)
+- [Security at a glance](#security-at-a-glance)
+- [Architecture](#architecture)
+- [Get started](#get-started)
+- [GitHub setup and permissions](#github-setup-and-permissions)
+- [Commands](#commands)
+- [Your data and backups](#your-data-and-backups)
+- [Current boundaries](#current-boundaries)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+</details>
 
 ---
 
-## At a glance
+## The idea
 
-| | |
+GitHub hosts repositories; it does not provide arbitrary folders containing separate repositories. Codexa adds that missing personal organization layer **locally**, like a file manager for your GitHub library.
+
+```text
+Your GitHub account                    Codexa on this PC
+────────────────────                   ───────────────────────────
+Repositories, permissions,   ───────▶  Virtual folders and nesting
+topics, visibility, metadata           Favorites and local assignments
+                                       Search, filters, and views
+```
+
+> **A folder move is not a GitHub action.** It only changes a local repository-to-folder assignment. Codexa does not move, rename, delete, or create repositories when you organize folders.
+
+## Features
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3>📁 Organize</h3>
+      <ul>
+        <li>Create nested virtual folders</li>
+        <li>Drag repositories between folders</li>
+        <li>Keep an Uncategorized view</li>
+        <li>Favorite frequently used repos</li>
+        <li>Back up and restore your folder data</li>
+      </ul>
+    </td>
+    <td width="33%" valign="top">
+      <h3>🔎 Find</h3>
+      <ul>
+        <li>Search names, descriptions, languages, and topics</li>
+        <li>Filter by public/private, archived, forks, or recent</li>
+        <li>Sort by name, language, dates, or visibility</li>
+        <li>Choose list or grid view</li>
+        <li>Select with Ctrl and Shift</li>
+      </ul>
+    </td>
+    <td width="33%" valign="top">
+      <h3>⚙️ Manage</h3>
+      <ul>
+        <li>Inspect repository details and statistics</li>
+        <li>Edit name, description, and homepage</li>
+        <li>Replace repository topics</li>
+        <li>Archive and unarchive</li>
+        <li>Change visibility with a review step</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+### Keyboard and mouse
+
+| Do this | To do this |
 |---|---|
-| **Desktop** | Windows application built with Electron |
-| **Frontend** | React, TypeScript, Vite, Tailwind CSS |
-| **GitHub** | Octokit and the GitHub REST API |
-| **Local data** | Organization metadata saved in the app's user-data folder |
-| **Authentication** | GitHub OAuth Device Flow; token encrypted with Electron `safeStorage` |
-| **Demo data** | None. The app does not show fabricated repositories. |
+| `Ctrl+K` | Focus repository search |
+| `Ctrl+A` | Select all currently visible repositories |
+| `Ctrl`-click | Add or remove one repository from selection |
+| `Shift`-click | Select a range |
+| `Esc` | Clear the current selection |
+| Double-click a repository | Open it on GitHub |
+| Drag a repository onto a folder | Move it in the local organization |
 
-## Contents
+## Feature map
 
-- [Why Codexa](#why-codexa)
-- [What works today](#what-works-today)
-- [Security model](#security-model)
-- [Architecture](#architecture)
-- [Getting started](#getting-started)
-- [Commands](#commands)
-- [GitHub setup and permissions](#github-setup-and-permissions)
-- [Local organization data](#local-organization-data)
-- [Known limitations](#known-limitations)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-
-## Why Codexa
-
-GitHub is excellent at hosting code, but it is not a personal file manager. Codexa gives you a desktop view for browsing and grouping repositories while leaving their actual GitHub locations alone.
-
-### Made for focused work
-
-- **A folder-first library** — create nested virtual folders and move repositories with drag and drop.
-- **Fast discovery** — search names, descriptions, languages, and topics; filter by visibility, archive status, forks, and recent activity.
-- **Two ways to browse** — switch between a compact list and a repository card grid.
-- **Useful context** — inspect default branch, language, visibility, stars, forks, topics, and dates without leaving the library.
-- **Real actions, clear consequences** — edit repository details, manage topics, archive or unarchive, and change visibility with confirmation.
-- **Your preferences stay yours** — favorites and folder organization are local to this Windows profile.
-
-### A small interaction guide
-
-| Action | How |
+| Capability | Current support |
 |---|---|
-| Search | Use the search field or press `Ctrl+K` |
-| Select multiple repositories | `Ctrl`-click / `Shift`-click; `Ctrl+A` selects the visible results |
-| Move a repository | Drag it onto a folder, or select repositories and use **Move to folder** |
-| Open the repository | Double-click a row or use **Open on GitHub** |
-| Copy the HTTPS clone URL | Open a repository's details and choose **Copy HTTPS URL** |
+| Sign in with GitHub | OAuth Device Flow using your OAuth App client ID |
+| Load repositories | Repositories the signed-in user can access, including organization repositories permitted by GitHub |
+| Virtual organization | Create, nest, rename, delete, assign, and drag/drop repositories into folders |
+| Repository discovery | Live search, filters, list and grid views, sortable columns |
+| Repository detail | Description, homepage, owner, branch, language, topics, visibility, stars, forks, and dates |
+| GitHub actions | Edit repository metadata, replace topics, archive/unarchive, change public/private visibility |
+| Bulk work | Review before move, archive/unarchive, or visibility changes; report per-repository failures |
+| Local utilities | Favorites, backup/restore organization JSON, copy HTTPS clone URL, open on GitHub |
+| Demo data | None; Codexa does not pass off sample repositories as live account data |
 
-## What works today
+GitHub is authoritative for repository changes. When an API request fails, Codexa surfaces the failure instead of reporting a false success. Actions may be unavailable to accounts without the required repository permissions or organization approval.
 
-| Area | Available |
-|---|---|
-| Sign-in | OAuth Device Flow with an OAuth App client ID |
-| Repository library | Lists repositories available to the signed-in user, including organization repositories the account can access |
-| Organization | Create, nest, rename, and delete virtual folders; assign one folder per repository |
-| Discovery | Search, list/grid views, sorting, visibility filters, archived/fork/recent filters |
-| Repository details | Description, homepage, primary language, visibility, branch, dates, topics, stars, and forks |
-| Repository actions | Edit name/description/homepage, replace topics, archive/unarchive, change public/private visibility |
-| Multi-select | Review before moving folders, archiving/unarchiving, or changing visibility; per-repository failure reporting; export selected metadata as JSON |
-| Local utilities | Favorites, export/restore organization JSON, copy clone URL, open on GitHub |
+## Security at a glance
 
-Repository actions are sent to GitHub. If GitHub rejects an action, Codexa reports the error and does not present it as successful. A folder move, by contrast, changes only local organization metadata.
+<table>
+  <tr>
+    <th align="left">🔐 Boundary</th>
+    <th align="left">How Codexa handles it</th>
+  </tr>
+  <tr>
+    <td><strong>Renderer</strong></td>
+    <td>Node.js integration is disabled. Context isolation and Electron renderer sandboxing are enabled.</td>
+  </tr>
+  <tr>
+    <td><strong>Preload / IPC</strong></td>
+    <td>The renderer receives a narrow set of typed IPC methods. Inputs are validated before local writes or repository actions.</td>
+  </tr>
+  <tr>
+    <td><strong>GitHub token</strong></td>
+    <td>OAuth and Octokit calls run in the Electron main process. The token is not exposed to React or written to local storage.</td>
+  </tr>
+  <tr>
+    <td><strong>Credential at rest</strong></td>
+    <td>Access and refresh tokens are encrypted using Electron <code>safeStorage</code>. If encryption is unavailable, Codexa refuses to save a token.</td>
+  </tr>
+  <tr>
+    <td><strong>Local organization</strong></td>
+    <td>Folder names, assignments, and favorites are stored as JSON in the app's per-user data directory, separately from credentials.</td>
+  </tr>
+  <tr>
+    <td><strong>External links</strong></td>
+    <td>External pages open in the system browser; navigation from the app window is restricted.</td>
+  </tr>
+</table>
 
-## Security model
+The OAuth App **client ID is public application configuration**. Do not put an OAuth client secret, private key, or access token in source code, `.env`, or renderer-exposed Vite variables. Codexa uses Device Flow and does not embed a client secret.
 
-Codexa keeps the renderer deliberately separate from privileged operations:
-
-1. **The renderer has no Node.js access.** Electron context isolation and sandboxing are enabled; Node integration is disabled.
-2. **The preload exposes a small API.** The renderer can request specific operations through IPC, not arbitrary filesystem access or shell execution.
-3. **IPC inputs are validated.** Data that reaches local persistence or GitHub actions is checked with Zod schemas.
-4. **GitHub requests stay in the main process.** The access token is never returned to React or written to local storage.
-5. **Tokens are encrypted at rest.** Electron `safeStorage` protects the access and refresh tokens. Device Flow refreshes short-lived access tokens when GitHub issues a refresh token; if a grant is revoked or refresh expires, Codexa asks you to sign in again.
-6. **Organization data contains no credentials.** Folder names, assignments, and favorites are saved separately as JSON under Electron's app data directory.
-7. **External navigation is restricted.** Only approved GitHub HTTPS links are opened through the system browser.
-
-The OAuth App **client ID is public application configuration**, not a client secret. Do not add a client secret, private key, or access token to `.env`, source code, or a Vite-exposed variable. Codexa uses Device Flow and does not need an embedded OAuth client secret.
-
-## Architecture
+### Architecture
 
 ```mermaid
 flowchart LR
-  UI["React renderer<br/>search · folders · repository views"]
-  Bridge["Validated preload API<br/>context isolation"]
-  Main["Electron main process<br/>IPC · Octokit · safeStorage"]
-  GH["GitHub OAuth Device Flow<br/>GitHub REST API"]
-  Disk["App user data<br/>encrypted token + organization JSON"]
+  UI["React renderer<br/>Explorer and local organization"]
+  Preload["Narrow preload API<br/>context isolation"]
+  Main["Electron main process<br/>IPC · validation · Octokit"]
+  GitHub["GitHub<br/>Device Flow · REST API"]
+  Storage["Windows user data<br/>encrypted credential · organization JSON"]
 
-  UI -->|"narrow IPC requests"| Bridge
-  Bridge --> Main
-  Main <-->|"OAuth and repository operations"| GH
-  Main <-->|"encrypted credential / local metadata"| Disk
+  UI -->|"typed requests"| Preload
+  Preload -->|"validated IPC"| Main
+  Main <-->|"OAuth and repository API"| GitHub
+  Main <-->|"safeStorage and local file"| Storage
+
+  classDef ui fill:#193342,stroke:#57B6DB,color:#EAF9FF,stroke-width:2px
+  classDef bridge fill:#302844,stroke:#AB8CF2,color:#F5EEFF,stroke-width:2px
+  classDef main fill:#29361D,stroke:#B4D96C,color:#F2F9E5,stroke-width:2px
+  classDef api fill:#252A31,stroke:#A8B5C4,color:#F4F7FA,stroke-width:2px
+  classDef disk fill:#443522,stroke:#E2B15B,color:#FFF5E3,stroke-width:2px
+  class UI ui
+  class Preload bridge
+  class Main main
+  class GitHub api
+  class Storage disk
 ```
 
 ```text
 electron/
-  main/       GitHub auth, Octokit, IPC validation, safe local persistence
-  preload/    typed, narrow renderer bridge
+  main/       Auth, Octokit, IPC validation, safe local persistence
+  preload/    Narrow typed bridge to the renderer
 src/
-  App.tsx     explorer interface and interaction flows
-  shared/     app types, organization helpers, validation, tests
+  App.tsx     Repository explorer and interaction flows
+  shared/     Data types, organization helpers, schemas, tests
+scripts/      Build-time OAuth configuration check
+docs/         README artwork
 ```
 
-## Getting started
+## Get started
 
-### Prerequisites
+### Requirements
 
 - Windows 10 or later
 - [Node.js 22.12 or later](https://nodejs.org/) and npm
 - A GitHub account
-- A GitHub OAuth App with **Device Flow** enabled (see [GitHub setup](#github-setup-and-permissions))
+- A GitHub OAuth App with **Device Flow enabled** ([setup below](#github-setup-and-permissions))
 
 ### Install and run
 
@@ -142,112 +228,117 @@ npm install
 Copy-Item .env.example .env
 ```
 
-Edit `.env` and set your OAuth App's client ID:
+Set your OAuth App client ID in `.env`:
 
 ```dotenv
 GITHUB_CLIENT_ID=your-oauth-app-client-id
 ```
 
-Then start the desktop app:
+Launch Codexa:
 
 ```powershell
 npm run dev
 ```
 
-Codexa opens the GitHub Device Flow page in your browser. Enter the one-time code shown in the app and approve access. Repository data is loaded only after GitHub authorizes the session.
+The app opens GitHub's Device Flow page in your browser and displays a one-time code. Enter the code, review the permission request, and authorize Codexa. Your repositories are fetched only after successful authorization.
 
-> For a distributable installer, set `GITHUB_CLIENT_ID` before building. The client ID is compiled into the desktop main process as public configuration. Do not package a client secret.
-
-## Commands
-
-| Command | Purpose |
-|---|---|
-| `npm run dev` | Run the Electron app with Vite hot reload |
-| `npm run build` | Type-check the project and create production bundles |
-| `npm test` | Run local organization and validation tests |
-| `npm run lint` | Lint the application and Electron sources |
-| `npm run build:win` | Build and package the Windows NSIS installer |
-
-The installer is written to `release/`. Set `GITHUB_CLIENT_ID` in `.env` before packaging; the packaging command fails early if it is missing. Building an installer may require an internet connection the first time Electron Builder downloads its packaging tools.
+> **Installer builds require the client ID.** Set `GITHUB_CLIENT_ID` in `.env` before running `npm run build:win`. The packaging command checks this configuration before building. The client ID is public configuration; never package a client secret.
 
 ## GitHub setup and permissions
 
-1. Open **GitHub → Settings → Developer settings → OAuth Apps** and create an OAuth App for Codexa.
-2. Enable **Device Flow** in that app's settings.
-3. If GitHub's registration form requests a callback URL, enter a local placeholder such as `http://localhost/callback`; Device Flow does not redirect to it.
-4. Copy the OAuth App **Client ID** into the local `.env` file as `GITHUB_CLIENT_ID`.
-5. Restart the dev app after changing `.env`; the value is injected by the Electron build configuration.
-6. During sign-in, review the GitHub authorization screen before approving.
+1. In GitHub, open **Settings → Developer settings → OAuth Apps** and create an OAuth App for Codexa.
+2. Enable **Device Flow** in the OAuth App settings.
+3. If GitHub asks for a callback URL, use a local placeholder such as `http://localhost/callback`; Device Flow does not redirect to it.
+4. Put the OAuth App **Client ID** in `.env` as `GITHUB_CLIENT_ID`.
+5. Restart the dev app after changing `.env`.
+6. During sign-in, review the permissions on GitHub before approving.
 
-Codexa requests the OAuth scopes `repo read:user offline_access`:
+Codexa requests:
 
-| Scope | Used for |
+| Scope | Why it is requested |
 |---|---|
-| `read:user` | Confirm the signed-in account and display its login/avatar |
+| `read:user` | Confirm the signed-in account and display its login and avatar |
 | `repo` | Read private repositories and perform repository actions such as editing metadata, topics, archive state, and visibility |
-| `offline_access` | Request short-lived access tokens with rotating refresh tokens when supported |
+| `offline_access` | Request short-lived access tokens and rotating refresh tokens when supported |
 
-`offline_access` lets Device Flow return rotating refresh tokens for expiring access tokens. The device-flow exchange and refresh do not require an OAuth client secret. See GitHub's [OAuth App authorization documentation](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow).
+The `repo` scope is broad because the app includes repository write actions. Organization owners may restrict OAuth Apps or require SAML SSO authorization; Codexa cannot bypass those policies. See GitHub's [Device Flow documentation](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow) for the current OAuth flow details.
 
-The `repo` scope is broad because the implemented write actions use GitHub's repository APIs. Organization owners may enforce SAML SSO or OAuth App restrictions; in that case, authorize the application for the organization or ask an administrator to approve it. Codexa cannot bypass organization policy.
+Signing out removes Codexa's locally stored token. To revoke the OAuth grant too, remove Codexa from [GitHub's authorized applications](https://github.com/settings/applications).
 
-To disconnect, use the account menu in the app. This removes Codexa's locally stored token; to revoke the OAuth grant itself, also remove Codexa from [GitHub's authorized applications](https://github.com/settings/applications).
+## Commands
 
-## Local organization data
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the Electron app with Vite hot reload |
+| `npm run build` | Type-check and create production bundles |
+| `npm test` | Run local organization and validation tests |
+| `npm run lint` | Lint renderer and Electron sources |
+| `npm run build:win` | Build and package the Windows NSIS installer |
 
-- Folders, nesting, favorites, and repository assignments are stored under Electron's per-user app-data directory.
-- A repository can belong to one virtual folder at a time; nested folder views include repositories assigned to child folders.
-- Repositories not assigned to a folder appear under **Uncategorized**.
-- Deleting a folder removes its local assignments, not the GitHub repositories.
-- **Export backup** and **Restore** work with organization JSON. The backup does not contain a GitHub access token.
-- Signing out does not delete your local folder organization.
+The installer is written to `release/`. The first installer build may download Electron Builder packaging tools and therefore requires internet access.
 
-## Known limitations
+## Your data and backups
 
-Codexa is an early implementation, not a finished replacement for GitHub's website. The current build does not yet include:
+| Data | Where it lives | Included in backup? |
+|---|---|---|
+| OAuth access/refresh tokens | Encrypted file in Electron's per-user app-data directory | **No** |
+| Virtual folders and nesting | Local organization JSON in app data | **Yes** |
+| Repository-to-folder assignments | Local organization JSON in app data | **Yes** |
+| Favorites | Local organization JSON in app data | **Yes** |
+| Repository metadata | Fetched from GitHub when the app syncs | Not part of organization backup |
 
-- GitHub App authentication, fine-grained permission grants, or a hosted OAuth broker
-- Bulk topic editing or custom saved filters/sort preferences
-- SQLite storage, automatic background sync, or cross-device synchronization
-- A setup wizard for OAuth App registration
+- Each repository belongs to one virtual folder at a time; a folder view also shows repositories assigned to nested folders.
+- Repositories without a folder appear in **Uncategorized**.
+- Deleting a folder removes its local assignments. It does **not** delete repositories from GitHub.
+- Use **Export backup** and **Restore** in the sidebar to save or restore organization JSON.
+- Signing out does not delete your local organization.
 
-There is no demo mode or fake repository fallback. A GitHub client ID and an authorized account are needed for live repository access. Do not interpret an available UI control as proof that an external GitHub permission or organization policy will allow an operation.
+## Current boundaries
+
+Codexa is an early implementation, not a complete replacement for GitHub. These capabilities are not included yet:
+
+- GitHub App authentication, fine-grained app permissions, or a hosted OAuth broker
+- Bulk topic editing and custom saved filters/sort preferences
+- SQLite storage, automatic background sync, and cross-device organization sync
+- A guided OAuth App setup wizard
+
+There is no demo mode or fake repository fallback. Live repository access requires a configured OAuth client ID and an account that authorizes the app. Review available GitHub permissions before performing consequential actions.
 
 ## Troubleshooting
 
 <details>
-<summary><strong>“Set GITHUB_CLIENT_ID in .env”</strong></summary>
+  <summary><strong>“Set GITHUB_CLIENT_ID in .env”</strong></summary>
 
-Copy `.env.example` to `.env`, set the OAuth App client ID, and restart `npm run dev`. The value is read during the Electron build; it is not a renderer variable.
+Copy `.env.example` to `.env`, enter the OAuth App client ID, and restart `npm run dev`. The value is main-process configuration, not a renderer variable.
 </details>
 
 <details>
-<summary><strong>GitHub does not show a device code or sign-in fails</strong></summary>
+  <summary><strong>GitHub sign-in fails or the code expires</strong></summary>
 
-Verify that Device Flow is enabled for the OAuth App, that the client ID is correct, and that GitHub is reachable. If a code expires, start sign-in again. `authorization_pending` is expected while approval is still waiting.
+Check that Device Flow is enabled, the client ID is correct, and GitHub is reachable. If the code expires, start sign-in again. `authorization_pending` is expected while approval is still waiting.
 </details>
 
 <details>
-<summary><strong>Private or organization repositories are missing</strong></summary>
+  <summary><strong>A private or organization repository is missing</strong></summary>
 
-Confirm the signed-in account can access the repository, that the OAuth grant includes the requested repository access, and that the organization permits this OAuth App. Complete any required SAML SSO authorization.
+Make sure the signed-in account can access it, the OAuth grant includes repository access, and the organization permits this OAuth App. Complete any required SAML SSO authorization.
 </details>
 
 <details>
-<summary><strong>An action is denied or rate limited</strong></summary>
+  <summary><strong>A GitHub action is denied or rate limited</strong></summary>
 
-The action may require repository admin access, organization approval, or a permission that the current account does not have. GitHub's rate limits also apply. Codexa surfaces API errors; retry after resolving the permission or limit.
+The account may lack repository admin permission, or an organization policy may block the OAuth App. GitHub rate limits also apply. Codexa reports the API error; resolve the permission or rate limit before trying again.
 </details>
 
 <details>
-<summary><strong>Secure storage is unavailable</strong></summary>
+  <summary><strong>Secure storage is unavailable</strong></summary>
 
-Codexa will not fall back to plaintext token storage. Use a supported Windows user session with Electron's `safeStorage` available, then restart the app.
+Codexa will not fall back to plaintext token storage. Use a supported Windows user session with Electron `safeStorage` available, then restart the app.
 </details>
 
 ## Contributing
 
-Contributions should preserve the boundary between the renderer and privileged services. Keep credentials out of renderer code, validate new IPC payloads, and add tests for changes to local organization behavior. Before opening a pull request, run:
+Preserve the renderer/main-process security boundary. Keep secrets out of the renderer, validate new IPC payloads, and add tests for changes to local organization behavior. Before opening a pull request, run:
 
 ```powershell
 npm test
@@ -255,10 +346,12 @@ npm run lint
 npm run build
 ```
 
+## License
+
+Codexa is licensed under the **MIT License**. See the complete terms in [`LICENSE`](./LICENSE).
+
 ---
 
 <div align="center">
-
-**Keep the code on GitHub. Make the workspace your own.**
-
+  <sub>Built for a tidier repository library — not a different GitHub.</sub>
 </div>

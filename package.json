@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "A private desktop workspace for organizing GitHub repositories.",
   "author": "Codexa",
+  "license": "MIT",
   "type": "module",
   "main": "out/main/index.js",
   "scripts": {

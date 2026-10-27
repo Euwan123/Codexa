@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="540" viewBox="0 0 1600 540" fill="none">
+  <defs>
+    <linearGradient id="background" x1="120" y1="38" x2="1468" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11151B"/>
+      <stop offset=".58" stop-color="#171D22"/>
+      <stop offset="1" stop-color="#172119"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="1030" y1="145" x2="1336" y2="412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D2F28D"/>
+      <stop offset="1" stop-color="#91C84E"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="1168" y1="219" x2="1398" y2="363" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#84D9F5"/>
+      <stop offset="1" stop-color="#5C91F5"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="1099" y1="300" x2="1270" y2="414" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9A1FF"/>
+      <stop offset="1" stop-color="#8E73F4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(342 252 -313 425 1260 196)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9DB67" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#A9DB67" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+      <path d="M38 0H0V38" stroke="#D8E5D2" stroke-opacity=".055"/>
+    </pattern>
+    <filter id="shadow" x="976" y="106" width="500" height="390" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="16"/>
+      <feGaussianBlur stdDeviation="17"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.32 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="540" rx="26" fill="url(#background)"/>
+  <rect width="1600" height="540" rx="26" fill="url(#glow)"/>
+  <rect width="1600" height="540" rx="26" fill="url(#grid)"/>
+  <circle cx="1256" cy="278" r="194" stroke="#CAE991" stroke-opacity=".11"/>
+  <circle cx="1256" cy="278" r="154" stroke="#CAE991" stroke-opacity=".08"/>
+  <path d="M1009 259H1063C1081 259 1095 273 1095 291V323C1095 341 1110 356 1128 356H1173" stroke="#9FC85F" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 7"/>
+  <path d="M1050 188H1105C1123 188 1138 203 1138 221V237C1138 255 1153 270 1171 270H1206" stroke="#75BFD9" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 7"/>
+  <path d="M1064 385H1104C1122 385 1137 370 1137 352V335C1137 317 1152 302 1170 302H1208" stroke="#AA8CF2" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 7"/>
+  <g filter="url(#shadow)">
+    <rect x="1015" y="143" width="336" height="282" rx="19" fill="#171C20" stroke="#FFFFFF" stroke-opacity=".13"/>
+    <rect x="1036" y="163" width="294" height="36" rx="8" fill="#20272A"/>
+    <circle cx="1055" cy="181" r="5" fill="#C5E988"/>
+    <rect x="1070" y="177" width="96" height="8" rx="4" fill="#82908A"/>
+    <rect x="1044" y="218" width="274" height="52" rx="10" fill="#222A28" stroke="#C1E670" stroke-opacity=".43"/>
+    <path d="M1062 244L1068 238H1081L1087 244V253H1062V244Z" fill="url(#lime)"/>
+    <rect x="1099" y="237" width="100" height="7" rx="3.5" fill="#E4EBDD"/>
+    <rect x="1099" y="250" width="67" height="5" rx="2.5" fill="#68736C"/>
+    <rect x="1280" y="238" width="24" height="11" rx="5.5" fill="#C1E670" fill-opacity=".2"/>
+    <circle cx="1291" cy="243.5" r="3" fill="#C1E670"/>
+    <rect x="1057" y="285" width="13" height="12" rx="2" fill="#A3AEB0"/>
+    <path d="M1057 289H1070" stroke="#171C20" stroke-width="1.5"/>
+    <rect x="1083" y="286" width="91" height="7" rx="3.5" fill="#C4CFCA"/>
+    <rect x="1083" y="299" width="151" height="5" rx="2.5" fill="#66716B"/>
+    <rect x="1274" y="286" width="31" height="15" rx="7.5" fill="#82D3EF" fill-opacity=".16"/>
+    <circle cx="1282" cy="293.5" r="3" fill="#82D3EF"/>
+    <rect x="1057" y="326" width="13" height="12" rx="2" fill="#A3AEB0"/>
+    <path d="M1057 330H1070" stroke="#171C20" stroke-width="1.5"/>
+    <rect x="1083" y="327" width="78" height="7" rx="3.5" fill="#C4CFCA"/>
+    <rect x="1083" y="340" width="127" height="5" rx="2.5" fill="#66716B"/>
+    <rect x="1274" y="327" width="31" height="15" rx="7.5" fill="#B995F5" fill-opacity=".18"/>
+    <circle cx="1282" cy="334.5" r="3" fill="#B995F5"/>
+    <rect x="1057" y="367" width="13" height="12" rx="2" fill="#A3AEB0"/>
+    <path d="M1057 371H1070" stroke="#171C20" stroke-width="1.5"/>
+    <rect x="1083" y="368" width="108" height="7" rx="3.5" fill="#C4CFCA"/>
+    <rect x="1083" y="381" width="91" height="5" rx="2.5" fill="#66716B"/>
+    <rect x="1274" y="368" width="31" height="15" rx="7.5" fill="#F4C56A" fill-opacity=".17"/>
+    <circle cx="1282" cy="375.5" r="3" fill="#F4C56A"/>
+    <path d="M1040 402H1325" stroke="#FFFFFF" stroke-opacity=".08"/>
+    <circle cx="1051" cy="413" r="3" fill="#8FD17A"/>
+    <rect x="1061" y="410" width="69" height="6" rx="3" fill="#727E76"/>
+    <rect x="1265" y="409" width="50" height="6" rx="3" fill="#59645D"/>
+  </g>
+  <rect x="1371" y="179" width="102" height="43" rx="12" fill="#19201B" stroke="#C1E670" stroke-opacity=".28"/>
+  <path d="M1390 195L1395 190H1407L1412 195V204H1390V195Z" fill="url(#lime)"/>
+  <rect x="1421" y="194" width="37" height="6" rx="3" fill="#ABB6A5"/>
+  <rect x="1374" y="343" width="110" height="43" rx="12" fill="#191E25" stroke="#6DBFE8" stroke-opacity=".3"/>
+  <circle cx="1396" cy="364" r="9" fill="url(#blue)"/>
+  <path d="M1392 364H1400M1396 360V368" stroke="#17202A" stroke-width="1.4" stroke-linecap="round"/>
+  <rect x="1413" y="361" width="52" height="6" rx="3" fill="#9AA9B3"/>
+  <text x="114" y="163" fill="#C1E670" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" letter-spacing="3.7">YOUR GITHUB WORKSPACE</text>
+  <text x="110" y="239" fill="#F0F3EB" font-family="Inter,Segoe UI,sans-serif" font-size="63" font-weight="700" letter-spacing="-2.7">A calmer way to</text>
+  <text x="110" y="314" fill="#C1E670" font-family="Inter,Segoe UI,sans-serif" font-size="63" font-weight="700" letter-spacing="-2.7">work with GitHub.</text>
+  <text x="114" y="363" fill="#ABB3AB" font-family="Inter,Segoe UI,sans-serif" font-size="18">A thoughtful desktop library for the repositories you already have.</text>
+  <text x="114" y="392" fill="#ABB3AB" font-family="Inter,Segoe UI,sans-serif" font-size="18">Group, find, and manage them — without moving a single repo.</text>
+  <rect x="113" y="433" width="162" height="37" rx="18.5" fill="#C1E670"/>
+  <text x="137" y="457" fill="#202818" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700">VIRTUAL FOLDERS</text>
+  <rect x="287" y="433" width="153" height="37" rx="18.5" fill="#20282A" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <text x="311" y="457" fill="#A8DDF1" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700">REAL GITHUB DATA</text>
+  <rect x="452" y="433" width="157" height="37" rx="18.5" fill="#24232D" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <text x="477" y="457" fill="#C7A9FB" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700">LOCAL BY DESIGN</text>
+</svg>
